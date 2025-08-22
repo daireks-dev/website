@@ -2,16 +2,22 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-screen bg-amber-100">
+    <div className="min-h-screen w-screen bg-[#ffedae]">
       
       <div className="w-full h-[50%] relative flex justify-center">
 
-        <div className="w-full aspect-square bottom-0 absolute">
-          <Image src="/images/PixelCabin.jpg" layout="fill" alt="pixel art" className="bottom-0 aspect-square blur-xs"/>
+        <div className="w-full aspect-[1/1] bottom-0 absolute flex justify-center">
+
+          <Image src="/images/RainbowBanner.png" layout="fill" alt="pixel art" className="bottom-0 aspect-square blur-xs bg-amber-50 opacity-80"/>
+
+          <div className="h-[75%] w-[95%] absolute bg-[#ffedae] bottom-0">
+            <Image src="/images/RainbowBanner.png" layout="fill" alt="pixel art" className="bottom-0 aspect-[1/1]"/>
+          </div>  
+
         </div>
 
-        <div className="relative flex flex-col items-center justify-center bg-amber-50 w-[80%] max-w-2xl max-h-[350] aspect-[4/3] rounded-4xl shadow-2xl">
-          <div className="bg-sky-100 w-full h-2/3 absolute top-0"/>
+        <div className="relative flex flex-col items-center justify-center bg-[#fff9e4] w-[80%] max-w-2xl max-h-[350] aspect-[4/3] rounded-4xl shadow-2xl">
+          <div className="bg-[#d6f3ff] w-full h-2/3 absolute top-0"/>
 
           <div className="h-[70%] aspect-[1/1] z-1 relative">
             <Image src="/images/Pfp.jpg" layout="fill" alt="pug" className="rounded-full shadow-2xl"/>
