@@ -16,6 +16,8 @@ export default function Videos() {
     | "Rojo"
     | "Asperite"
     | "Next.js"
+    | "OpenCV"
+    | "Mido"
 
 
     const colors: Record<Tag, string> = {
@@ -30,7 +32,9 @@ export default function Videos() {
     JS: "#f7df1e",
     Rojo: "#eb4d4d",
     Asperite: "#ed98cd",
-    "Next.js": "#817c91"
+    "Next.js": "#817c91",
+    OpenCV: "#ff6f61",
+    Mido: "#6ee7b7"
     };
 
     // Use Tag[] for the tags array
@@ -74,6 +78,16 @@ export default function Videos() {
         image: "/images/DesmosDemo.gif",
         year: "2024",
         link: "https://www.desmos.com/art#19;glofedvu2q",
+        extraimage: "/images/ArtExpo.png"
+    },
+    {
+        title: "MIDI Visualizer",
+        description: "A Python MIDI visualizer that parses MIDI files with Mido and generates frame-by-frame piano roll videos with OpenCV. Notes are color-coded by MIDI channel, matching the piano display, and the playback speed dynamically adapts to tempo changes.",
+        tags: ["Python", "OpenCV", "Mido", "FL Studio"],
+        color: "#a4a3c9",
+        image: "/images/VisualizerDemo.gif",
+        year: "2024",
+        link: "https://github.com/daireks-dev/MidiVisualizer",
         extraimage: "/images/ArtExpo.png"
     },
     {
