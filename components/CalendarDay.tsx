@@ -3,8 +3,8 @@ export default function CalendarDay() {
 
   return (
         
-        <div className="bg-white outline relative">
-            <Image className="absolute z-0 p-[2]" src="/latest.jpg" alt="cat" layout="fill"/>
+        <div className="bg-white outline relative scale-95">
+            <Image className="absolute z-0" src="/latest.jpg" alt="cat" layout="fill"/>
             <h1 className="mx-1 z-1 relative text-outline">#</h1>-
         </div>
 
