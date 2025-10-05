@@ -5,18 +5,22 @@ import { Midi } from "@tonejs/midi";
 import Color from "color";
 import * as Tone from "tone";
 
+type Theme = {
+  active: boolean,
+  track_colors: string[];
+  bg_colors: string[];
+  key_colors: string[];
+  xZoom: number;
+  yPadding: number;
+};
+
 interface Props {
   isPlaying: boolean;
-  xStretch: number;
-  yPadding: number;
   inputRef: React.RefObject<HTMLInputElement | null>;
   currentTime: number;
   setCurrentTime: (t: number) => void;
-  colors: {
-    tracks: string[];
-    background: string[];
-    keys: string[];
-  };
+  currentTheme: Theme;
+  setCurrentTheme: (t: Theme) => void;
   songLength: number;
   setSongLength: (v: number) => void;
   isSeeking: boolean;
@@ -25,16 +29,15 @@ interface Props {
 
 export default function Visualizer({
   isPlaying,
-  xStretch,
-  yPadding,
   inputRef,
   currentTime,
   setCurrentTime,
-  colors,
+  currentTheme,
+  setCurrentTheme,
   songLength,
   setSongLength,
   isSeeking,
-  setIsSeeking,
+  setIsSeeking
 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const pianoRef = useRef<HTMLCanvasElement | null>(null);
@@ -48,21 +51,21 @@ export default function Visualizer({
   const triggeredNotesRef = useRef<Set<string>>(new Set());
 
   // live refs
-  const colorsRef = useRef(colors);
-  const xStretchRef = useRef(xStretch);
-  const yPaddingRef = useRef(yPadding);
+  const colorsRef = useRef(currentTheme);
+  const xStretchRef = useRef(currentTheme.xZoom);
+  const yPaddingRef = useRef(currentTheme.yPadding);
 
   useEffect(() => {
-    colorsRef.current = colors;
-  }, [colors]);
+    colorsRef.current = currentTheme;
+  }, [currentTheme]);
 
   useEffect(() => {
-    xStretchRef.current = xStretch;
-  }, [xStretch]);
+    xStretchRef.current = currentTheme.xZoom;
+  }, [currentTheme.xZoom]);
 
   useEffect(() => {
-    yPaddingRef.current = yPadding;
-  }, [yPadding]);
+    yPaddingRef.current = currentTheme.yPadding;
+  }, [currentTheme.yPadding]);
 
   // Initialize Tone.js synth
   useEffect(() => {
@@ -99,7 +102,7 @@ export default function Visualizer({
   useEffect(() => {
     if (isPlaying && !demoLoadedRef.current) {
       const fetchDemo = async () => {
-        const response = await fetch("/demo.mid");
+        const response = await fetch("/demo_song.mid");
         const arrayBuffer = await response.arrayBuffer();
         await loadMidi(arrayBuffer);
         demoLoadedRef.current = true; // mark demo as loaded
@@ -174,14 +177,14 @@ export default function Visualizer({
       let fillColor: string;
       if (activeNotes.length > 0) {
         const trackColor =
-          colorsRef.current.tracks[activeNotes[0].track] || "orange";
+          colorsRef.current.track_colors[activeNotes[0].track] || "orange";
         fillColor = isBlackKey(midi)
           ? Color(trackColor).darken(0.5).saturate(0.3).hex()
           : trackColor;
       } else {
         fillColor = isBlackKey(midi)
-          ? colorsRef.current.keys[1]
-          : colorsRef.current.keys[0];
+          ? colorsRef.current.key_colors[1]
+          : colorsRef.current.key_colors[0];
       }
 
       ctx.fillStyle = fillColor;
@@ -235,8 +238,8 @@ export default function Visualizer({
 
     // Background gradient
     const gradient = ctx.createLinearGradient(0, 0, 0, canvas.clientHeight);
-    gradient.addColorStop(0, colorsRef.current.background[0]);
-    gradient.addColorStop(1, colorsRef.current.background[1]);
+    gradient.addColorStop(0, colorsRef.current.bg_colors[0]);
+    gradient.addColorStop(1, colorsRef.current.bg_colors[1]);
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
 
@@ -274,22 +277,15 @@ export default function Visualizer({
       const isActive = time >= note.time && time <= note.time + note.duration;
 
       // Trigger sound only if playing and doPlayNotes = true
-      if (
-        isActive &&
-        doPlayNotes &&
-        isPlaying &&
-        !triggeredNotesRef.current.has(noteKey)
-      ) {
-        synthRef.current?.triggerAttackRelease(
-          Tone.Frequency(note.midi, "midi").toFrequency(),
-          note.duration
-        );
-        triggeredNotesRef.current.add(noteKey);
-      }
-
-      // Remove note from triggered set if its time has passed
-      if (time > note.time + note.duration) {
-        triggeredNotesRef.current.delete(noteKey);
+      if (isActive && doPlayNotes && isPlaying) {
+        const noteId = `${note.track}-${note.midi}-${note.time}`;
+        if (!triggeredNotesRef.current.has(noteId)) {
+          synthRef.current?.triggerAttackRelease(
+            Tone.Frequency(note.midi, "midi").toFrequency(),
+            note.duration
+          );
+          triggeredNotesRef.current.add(noteId);
+        }
       }
 
       // Shadow
@@ -316,7 +312,7 @@ export default function Visualizer({
       ctx.beginPath();
       ctx.shadowBlur = 0;
       ctx.shadowColor = "transparent";
-      ctx.fillStyle = colorsRef.current.tracks[note.track] || "blue";
+      ctx.fillStyle = colorsRef.current.track_colors[note.track] || "blue";
       ctx.roundRect(x, y, w, keyHeight, 1);
       ctx.fill();
 
@@ -356,7 +352,7 @@ export default function Visualizer({
       triggeredNotesRef.current.clear();
       drawFrame(pausedTimeRef.current);
     }
-  }, [currentTime, colors, xStretch, yPadding, isPlaying, notes]);
+  }, [currentTime, currentTheme, isPlaying, notes]);
 
   // Calculate song length
   const getSongLength = (notes: any[]) => {
@@ -368,27 +364,38 @@ export default function Visualizer({
     if (notes.length > 0) setSongLength(getSongLength(notes));
   }, [notes]);
 
+  useEffect(() => {
+    if (!isPlaying) {
+      triggeredNotesRef.current.clear(); // allow notes to retrigger if slider moves
+    }
+  }, [currentTime]);
+
   return (
     <div className="w-full max-w-4xl mx-auto flex flex-col gap-2">
-      <div className="flex gap-2 w-full">
-        <div className="relative flex-1 w-16 aspect-video drop-shadow-2xl">
+
+      <div className="flex aspect-video gap-2 w-full">
+
+        <div className="relative flex-1 drop-shadow-2xl">
           <canvas
             ref={pianoRef}
             className="absolute inset-0 w-full h-full bg-gray-100"
-            style={{ backgroundColor: Color(colors["keys"][0]).darken(0.1).hex() }}
+            style={{ backgroundColor: Color(currentTheme["key_colors"][0]).darken(0.1).hex() }}
           />
         </div>
-        <div className="relative flex-8 aspect-video drop-shadow-2xl">
+
+        <div className="relative flex-8 drop-shadow-2xl">
           <canvas
             ref={canvasRef}
             className="absolute inset-0 w-full h-full"
           />
           <div className="bg-[#666666] absolute inset-0 w-full h-full z-[-1] flex flex-col items-center justify-center">
-            <h1 className="text-black font-bold">Welcome to WebMidi!</h1>
-            <h1 className="text-[#222222]">Upload a midi file above or press play to show a demo.</h1>
+            <h1 className="text-black font-bold text-[min(2.2vh,2.2vw,1rem)]">Welcome to WebMidi!</h1>
+            <h1 className="text-[#222222] text-[min(2.2vh,2.2vw,1rem)]">Upload a midi file above or press play to show a demo.</h1>
           </div>
         </div>
+
       </div>
+
     </div>
   );
 }

@@ -3,15 +3,24 @@ import { HexColorPicker } from "react-colorful";
 import SquareSpacer from "./SquareSpacer"
 import { useEffect, useRef, useState } from "react";
 
+type Theme = {
+  active: boolean,
+  track_colors: string[];
+  bg_colors: string[];
+  key_colors: string[];
+  xZoom: number;
+  yPadding: number;
+};
+
 interface ButtonProps {
     id: number
-    colors: {tracks: string[], background: string[], keys: string[]},
-    setColors: (t: {tracks: string[], background: string[], keys: string[]}) => void
+    currentTheme: Theme,
+    setCurrentTheme: (t: Theme) => void
 }
 
-export default function GradientButton({colors, setColors, id}: ButtonProps) {
-    const topColor = colors["background"][0]
-    const bottomColor = colors["background"][1]
+export default function GradientButton({currentTheme, setCurrentTheme, id}: ButtonProps) {
+    const topColor = currentTheme["bg_colors"][0]
+    const bottomColor = currentTheme["bg_colors"][1]
 
     const [showTopPicker, setShowTopPicker] = useState(false)
     const [showBottomPicker, setShowBottomPicker] = useState(false)
@@ -45,13 +54,13 @@ export default function GradientButton({colors, setColors, id}: ButtonProps) {
                     <div className="h-full w-[calc(200%+6px)] flex flex-col gap-1.5">
                         <button onClick={() => setShowTopPicker((prev) => !prev)} style={{ backgroundColor: topColor }} className="flex-1 drop-shadow-2xl" ref={topButtonRef}>
                             <div className="bg-black w-full h-full opacity-0 hover:opacity-30 transition flex justify-center items-center">
-                                <h1 className="font-bold text-[min(2.2vw,1rem)]">{topColor}</h1>
+                                <h1 className="font-bold text-[min(2.2vh,2.2vw,1rem)]">{topColor}</h1>
                             </div>
                         </button>
 
                         <button onClick={() => setShowBottomPicker((prev) => !prev)} style={{ backgroundColor: bottomColor }} className="flex-1 drop-shadow-2xl" ref={bottomButtonRef}>
                             <div className="bg-black w-full h-full opacity-0 hover:opacity-30 transition flex justify-center items-center">
-                                <h1 className="font-bold text-[min(2.2vw,1rem)]">{bottomColor}</h1>
+                                <h1 className="font-bold text-[min(2.2vh,2.2vw,1rem)]">{bottomColor}</h1>
                             </div>
                         </button>
                     </div>
@@ -62,18 +71,18 @@ export default function GradientButton({colors, setColors, id}: ButtonProps) {
             {showTopPicker &&
             <div ref={topPickerRef} className="absolute left-1/2 top-full mt-2 -translate-x-1/2 z-50">
                 <HexColorPicker className="max-h-[21vw] max-w-[21vw] aspect-square" onChange={(newColor) => {
-                    const newBackground = [...colors.background]
+                    const newBackground = [...currentTheme.bg_colors]
                     newBackground[0] = newColor
-                    setColors({...colors, background: newBackground})
+                    setCurrentTheme({...currentTheme, bg_colors: newBackground})
                 }}/>
             </div>}   
 
             {showBottomPicker &&
             <div ref={bottomPickerRef} className="absolute left-1/2 top-full mt-2 -translate-x-1/2 z-60">
                 <HexColorPicker className="max-h-[21vw] max-w-[21vw] aspect-square" onChange={(newColor) => {
-                    const newBackground = [...colors.background]
+                    const newBackground = [...currentTheme.bg_colors]
                     newBackground[1] = newColor
-                    setColors({...colors, background: newBackground})
+                    setCurrentTheme({...currentTheme, bg_colors: newBackground})
                 }}/>
             </div>}   
 
