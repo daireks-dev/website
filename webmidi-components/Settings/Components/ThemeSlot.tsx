@@ -121,6 +121,7 @@ export default function ThemeSlot({currentTheme, setCurrentTheme, slotNumber, th
                     {
                         themes[slotNumber]["track_colors"].map((color, index) => (
                         <div
+                            key={index}
                             className="bg-white flex-1 h-[20%] z-10 opacity-60 pointer-events-none"
                             style={{
                                 backgroundColor: color,

@@ -53,7 +53,7 @@ export default function Home() {
 
             <a href="/tech" className="flex justify-center h-[90%] aspect-[1/1] relative">
 
-              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.6] ">Technical Projects</h1>
+              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.7] ">Technical Projects</h1>
               <h1 className="absolute text-white z-2 bottom-1">Technical Projects</h1>
               
               <Image src="/images/Programming.png" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:-rotate-6"/>
@@ -63,12 +63,12 @@ export default function Home() {
               </div>
             </a>
 
-            <a href="/desmos" className="flex justify-center h-[90%] aspect-[1/1] relative">
+            <a href="/webmidi" className="flex justify-center h-[90%] aspect-[1/1] relative">
 
-              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.6] ">Desmos Experiments</h1>
-              <h1 className="absolute text-white z-2 bottom-1">Desmos Experiments</h1>
+              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.7] ">WebMidi</h1>
+              <h1 className="absolute text-white z-2 bottom-1">WebMidi</h1>
 
-              <Image src="/images/Desmos.png" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:rotate-6"/>
+              <Image src="/images/webmidi.png" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:rotate-6"/>
 
               <div className="w-[40%] aspect-square absolute top-[-15]">
                 <Image src="/images/YellowTack.png" fill alt="Logo"/>
@@ -78,7 +78,7 @@ export default function Home() {
 
             <a href="/bowietracker" className="flex justify-center h-[90%] aspect-[1/1] relative">
               
-              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.6]">Bowie Tracker</h1>
+              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.7]">Bowie Tracker</h1>
               <h1 className="absolute text-white z-2 bottom-1">Bowie Tracker</h1>
 
               <Image src="/images/Piano.webp" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:-rotate-6"/>
@@ -90,7 +90,7 @@ export default function Home() {
 
             <a href="/music" className="flex justify-center h-[90%] aspect-[1/1] relative">
               
-              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.6] ">Music</h1>
+              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.7] ">Music</h1>
               <h1 className="absolute text-white z-2 bottom-1">Music</h1>
               
               <Image src="/images/UnfinishedSongs.png" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:rotate-6"/>
@@ -102,7 +102,7 @@ export default function Home() {
 
             <a className="flex justify-center h-[90%] aspect-[1/1] relative">
               
-              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.6] ">Visual Art</h1>
+              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.7] ">Visual Art</h1>
               <h1 className="absolute text-white z-2 bottom-1">Visual Art</h1>
               
               <Image src="/images/Art.webp" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:-rotate-6"/>
@@ -113,12 +113,12 @@ export default function Home() {
         
             </a>
 
-            <a className="flex justify-center h-[90%] aspect-[1/1] relative">
+            <a href="/desmos" className="flex justify-center h-[90%] aspect-[1/1] relative">
               
-              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.6]">Personal</h1>
-              <h1 className="absolute text-white z-2 bottom-1">Personal</h1>
+              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.7]">Desmos Experiments</h1>
+              <h1 className="absolute text-white z-2 bottom-1">Desmos Experiments</h1>
 
-              <Image src="/images/Nature.jpeg" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:rotate-6"/>
+              <Image src="/images/Desmos.png" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:rotate-6"/>
 
               <div className="w-[50%] aspect-square absolute top-[-45]">
                 <Image src="/images/Tape.png" fill alt="Logo"/>
