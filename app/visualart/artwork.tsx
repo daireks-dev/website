@@ -1,7 +1,5 @@
-import Image from "next/image"
 
 export default function Artwork() {
-    let isViewing = false
 
     return (
         <div className="bg-white aspect-square hover:rotate-3 transition drop-shadow-2xl flex justify-center items-center">

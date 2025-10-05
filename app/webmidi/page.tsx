@@ -1,7 +1,6 @@
 'use client';
 import FileInput from "@/webmidi-components/FileInput"
 import Settings from "@/webmidi-components/Settings/Settings"
-import { HexColorPicker } from "react-colorful"
 import VideoControls from "@/webmidi-components/VideoControls/VideoControls"
 import { useRef, useState } from "react";
 import Visualizer from "@/webmidi-components/Old/Visualizer";
@@ -34,8 +33,6 @@ export default function HomeTest() {
 
     const [currentTheme, setCurrentTheme] = useState(defaultTheme)
     const [themes, setThemes] = useState(defaultThemes)
-    const [xStretch, setXStretch] = useState(5)
-    const [yPadding, setYPadding] = useState(5)
     const [isPlaying, setIsPlaying] = useState(false);
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [songLength, setSongLength] = useState(0);
