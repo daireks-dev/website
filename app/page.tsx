@@ -51,18 +51,6 @@ export default function Home() {
 
           <div className="grid grid-cols-3 place-items-center gap-y-7 w-full h-full"> 
 
-            <a href="/tech" className="flex justify-center h-[90%] aspect-[1/1] relative">
-
-              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.7] ">Technical Projects</h1>
-              <h1 className="absolute text-white z-2 bottom-1">Technical Projects</h1>
-              
-              <Image src="/images/Programming.png" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:-rotate-6"/>
-              
-              <div className="w-[50%] aspect-square absolute top-[-45]">
-                <Image src="/images/Tape.png" fill alt="Logo"/>
-              </div>
-            </a>
-
             <a href="/webmidi" className="flex justify-center h-[90%] aspect-[1/1] relative">
 
               <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.7] ">WebMidi</h1>
@@ -70,21 +58,34 @@ export default function Home() {
 
               <Image src="/images/webmidi.png" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:rotate-6"/>
 
-              <div className="w-[40%] aspect-square absolute top-[-15]">
-                <Image src="/images/YellowTack.png" fill alt="Logo"/>
+              <div className="w-[50%] aspect-square absolute top-[-45]">
+                <Image src="/images/Tape.png" fill alt="Logo"/>
               </div>
 
             </a>
 
-            <a href="/bowietracker" className="flex justify-center h-[90%] aspect-[1/1] relative">
+            <a href="/flstheme" className="flex justify-center h-[90%] aspect-[1/1] relative">
               
-              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.7]">Bowie Tracker</h1>
-              <h1 className="absolute text-white z-2 bottom-1">Bowie Tracker</h1>
-
-              <Image src="/images/Piano.webp" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:-rotate-6"/>
+              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.7] ">FL Theme Maker</h1>
+              <h1 className="absolute text-white z-2 bottom-1">FL Theme Maker</h1>
+              
+              <Image src="/images/ThemeMakerIcon.png" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:-rotate-6"/>
 
               <div className="w-[40%] aspect-square absolute top-[-15]">
-                <Image src="/images/RedTack.png" fill alt="Logo"/>
+                <Image src="/images/GreenTack.png" fill alt="Logo"/>
+              </div>
+        
+            </a>
+
+            <a href="/tech" className="flex justify-center h-[90%] aspect-[1/1] relative">
+
+              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.7] ">Technical Projects</h1>
+              <h1 className="absolute text-white z-2 bottom-1">Technical Projects</h1>
+              
+              <Image src="/images/Programming.png" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:-rotate-6"/>
+              
+              <div className="w-[40%] aspect-square absolute top-[-15]">
+                <Image src="/images/YellowTack.png" fill alt="Logo"/>
               </div>
             </a>
 
@@ -100,7 +101,19 @@ export default function Home() {
               </div>
             </a>
 
-            <a className="flex justify-center h-[90%] aspect-[1/1] relative">
+            <a href="/bowietracker" className="flex justify-center h-[90%] aspect-[1/1] relative">
+              
+              <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.7]">Bowie Tracker</h1>
+              <h1 className="absolute text-white z-2 bottom-1">Bowie Tracker</h1>
+
+              <Image src="/images/Piano.webp" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:-rotate-6"/>
+
+              <div className="w-[40%] aspect-square absolute top-[-15]">
+                <Image src="/images/RedTack.png" fill alt="Logo"/>
+              </div>
+            </a>
+
+            {/*<a className="flex justify-center h-[90%] aspect-[1/1] relative">
               
               <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.7] ">Visual Art</h1>
               <h1 className="absolute text-white z-2 bottom-1">Visual Art</h1>
@@ -111,7 +124,7 @@ export default function Home() {
                 <Image src="/images/GreenTack.png" fill alt="Logo"/>
               </div>
         
-            </a>
+            </a>*/}
 
             <a href="/desmos" className="flex justify-center h-[90%] aspect-[1/1] relative">
               
