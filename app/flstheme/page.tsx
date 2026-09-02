@@ -5,7 +5,7 @@ import Mask from "@/components/flstheme-components/Mask";
 import Color from "@/components/flstheme-components/Color";
 import { colorModels } from "../../lib/colors";
 import { Slider } from "@/components/ui/slider";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SquareLabel from "@/components/flstheme-components/SquareLabel";
 import ColorButton from "@/components/flstheme-components/ColorButton";
 import ToggleButton from "@/components/flstheme-components/ToggleButton";
@@ -139,7 +139,7 @@ export default function Home() {
         </div>
         <div className="h-[50%] w-[30%] flex-1"/>
         <div className="h-[50%] w-[10%] flex flex-1 justify-center items-center">
-          <ExportButton text="hi" onClick={saveTheme}/>
+          <ExportButton onClick={saveTheme}/>
         </div>
       </div>
 

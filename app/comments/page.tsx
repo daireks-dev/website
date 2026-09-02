@@ -1,6 +1,6 @@
 'use client';
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { useEffect } from "react";
 
 const firebaseConfig = {
@@ -17,7 +17,7 @@ export default function Comments() {
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    async function addComment() {
+    {/*async function addComment() {
         try {
             const docRef = await addDoc(collection(db, "Comments"), {
                 Name: "Derek",
@@ -28,6 +28,8 @@ export default function Comments() {
             console.error("Error adding document")
         }
     }
+    */}
+
 
     useEffect(() => {
         async function getComments() {
@@ -42,9 +44,9 @@ export default function Comments() {
 
     return (
         <div className="flex justify-center items-center">
-            <button onClick={addComment} className="bg-white w-100 aspect-square">
+            {/*<button onClick={addComment} className="bg-white w-100 aspect-square">
 
-            </button>
+            </button>*/}
         </div>
     )
 }

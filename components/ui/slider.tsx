@@ -31,6 +31,7 @@ function Slider({
       min={min}
       max={max}
       style={{ "--slider-color": color } as React.CSSProperties}
+      thumbCollisionBehavior={thumbCollisionBehavior}
       thumbAlignment="edge"
       {...props}
     >
