@@ -4,8 +4,13 @@ export default function Desmos() {
 
   const projects = [
     {
+      title: "Mini Desmos Song",
+      url: "https://www.desmos.com/art#19;8kxhmzypm8",
+      description: "2026: A winning submission for the Desmos Art Expo where I attempted to make an original song in the graphing calculator. Inspired by my submission the previous year."
+    },
+    {
       title: "Mushroom Caves",
-      url: "https://www.desmos.com/calculator/glofedvu2q",
+      url: "https://www.desmos.com/art-2024#19;glofedvu2q",
       description: "2025: I made this song over winter break originally because there was a little trend on youtube of people making music on desmos. A month later, I made the visuals in a spontaneous decision to join the Desmos Art Expo and actually got in!"
     },
     {
