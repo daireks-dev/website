@@ -56,7 +56,7 @@ export default function Home() {
               <h1 className="absolute text-white z-2 bottom-1 bg-black opacity-[0.7] ">WebMidi</h1>
               <h1 className="absolute text-white z-2 bottom-1">WebMidi</h1>
 
-              <Image src="/images/webmidi.png" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:rotate-6"/>
+              <Image src="/images/WebMidi.png" fill alt="Logo" className="border-5 border-white hover:brightness-60 transition transform hover:scale-110 hover:rotate-6"/>
 
               <div className="w-[50%] aspect-square absolute top-[-45]">
                 <Image src="/images/Tape.png" fill alt="Logo"/>
