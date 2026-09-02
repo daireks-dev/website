@@ -1,6 +1,38 @@
 export default function Videos() {
   const videos = [
     {
+      title: "Song 127: Summer Shores",
+      url: "https://www.youtube.com/embed/P-jCyYJqJbM",
+    },
+    {
+      title: "Song 125: Return",
+      url: "https://www.youtube.com/embed/rWxl5JWIIok",
+    },
+    {
+      title: "Song 118: PROPHECY",
+      url: "https://www.youtube.com/embed/Rv4lLR3ZW78",
+    },
+    {
+      title: "Song 109: Setting Sail",
+      url: "https://www.youtube.com/embed/9waQ1uZLv7Y",
+    },
+    {
+      title: "Song 94: Can't Quite Grasp",
+      url: "https://www.youtube.com/embed/C00j1_HCA5s",
+    },
+    {
+      title: "Song 90: Ghost Bossa",
+      url: "https://www.youtube.com/embed/bP9F7UpiFv4",
+    },
+    {
+      title: "Song 85: Through The City",
+      url: "https://www.youtube.com/embed/GmxO3mWgIKY",
+    },
+    {
+      title: "Song 73: Haiku II",
+      url: "https://www.youtube.com/embed/LboaOZMG9FI",
+    },
+    {
       title: "Song 72: Nightfall",
       url: "https://www.youtube.com/embed/9_C1t6vPMC8",
     },
